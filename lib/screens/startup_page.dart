@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:math_game/constants.dart' as constants;
-import 'package:math_game/screens/login_screen.dart';
-import 'package:math_game/screens/signup_screen.dart';
+import 'package:math_game/screens/home_screen.dart';
 
 class StartupPage extends StatefulWidget {
   const StartupPage({super.key});
@@ -15,100 +14,104 @@ class _StartupPageState extends State<StartupPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: constants.backgroundColor,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(height: 100),
-            Text(
-              'Mathly',
-              style: TextStyle(
-                fontFamily: 'Cursive',
-                color: constants.primaryTextColor,
-                fontSize: 50,
-              ),
+      body: GestureDetector(
+        onTap: () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const HomeScreen(),
             ),
-            const SizedBox(height: 10),
-            Text(
-              'The more you solve, the better you get',
-              style: TextStyle(color: constants.primaryTextColor),
-            ),
-            const SizedBox(height: 100),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    border:
-                        Border.all(width: 2.0, color: constants.secondaryColor),
-                  ),
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      shape: const MaterialStatePropertyAll(
-                          RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20)))),
-                      elevation: const MaterialStatePropertyAll(0),
-                      backgroundColor:
-                          const MaterialStatePropertyAll(Colors.transparent),
-                      foregroundColor:
-                          MaterialStatePropertyAll(constants.primaryTextColor),
-                      padding: const MaterialStatePropertyAll(
-                        EdgeInsets.symmetric(horizontal: 35),
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginScreen(),
-                        ),
-                      );
-                    },
-                    child: const Text('Login'),
-                  ),
-                ),
-                const SizedBox(width: 20),
-                Container(
-                  decoration: BoxDecoration(
-                    color: constants.secondaryColor,
-                    borderRadius: BorderRadius.circular(50),
-                    border:
-                        Border.all(width: 2.0, color: constants.secondaryColor),
-                  ),
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      shape: const MaterialStatePropertyAll(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
+          );
+        },
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(height: 100),
+              Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5)),
+                        child: Center(
+                          child: Text(
+                            '+',
+                            style: TextStyle(
+                                color: constants.backgroundColor, fontSize: 40),
                           ),
                         ),
                       ),
-                      elevation: const MaterialStatePropertyAll(0),
-                      backgroundColor:
-                          const MaterialStatePropertyAll(Colors.transparent),
-                      foregroundColor:
-                          MaterialStatePropertyAll(constants.primaryTextColor),
-                      padding: const MaterialStatePropertyAll(
-                        EdgeInsets.symmetric(horizontal: 30),
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SignUpScreen(),
+                      const SizedBox(width: 5),
+                      Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
                         ),
-                      );
-                    },
-                    child: const Text('Sign up'),
+                        child: Center(
+                          child: Text(
+                            '-',
+                            style: TextStyle(
+                                color: constants.backgroundColor, fontSize: 40),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
-            )
-          ],
+                  const SizedBox(height: 5),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Center(
+                          child: Text(
+                            'x',
+                            style: TextStyle(
+                                color: constants.backgroundColor, fontSize: 40),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(width: 5),
+                      Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                        ),
+                        child: Center(
+                          child: Text(
+                            '/',
+                            style: TextStyle(
+                                color: constants.backgroundColor, fontSize: 40),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(height: 100),
+              Text(
+                'Tap to start',
+                style:
+                    TextStyle(color: constants.primaryTextColor, fontSize: 30),
+              )
+            ],
+          ),
         ),
       ),
     );
